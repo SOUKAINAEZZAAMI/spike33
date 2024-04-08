@@ -1,83 +1,14 @@
-import { mount } from 'marketing/MarketingApp';
-import React, { useRef, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, {useRef} from 'react';
+import {useHistory} from 'react-router-dom';
+import {mountMicrofrontend} from '../utils/mountMicrofrontendHelper';
 
+const MarketingApp = () => {
+    const history = useHistory();
+    const ref = useRef(null);
 
-export default () => {
-const ref = useRef(null);
-const history = useHistory();
-useEffect(() => {
-const { onParentNavigate } = mount(ref.current, {
-initialPath: history.location.pathname,
-onNavigate: ({ pathname: nextPathname }) => {
-const { pathname } = history.location;
-if (pathname !== nextPathname) {
-history.push(nextPathname);
-}
-},
-});
-history.listen(onParentNavigate);
-}, []);
-return <div ref={ref} />;
+    mountMicrofrontend('marketing', 'marketingContainer', ref, history);
+
+    return <div ref={ref} id="marketingContainer"></div>;
 };
 
-
-
-/*export default () => {
-const ref = useRef(null);
-const history = useHistory();
-useEffect(() => {
-const { onParentNavigate } = mount(ref.current, {
-initialPath: history.location.pathname,
-onNavigate: ({ pathname: nextPathname }) => {
-const { pathname } = history.location;
-if (pathname !== nextPathname) {
-history.push(nextPathname);
-}
-},
-});
-history.listen(onParentNavigate);
-}, []);
-return <div ref={ref} />;
-};*/
-
-
-
-
-
-
-
-/*import { mount } from 'marketing/MarketingApp';
-import React, { useRef, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-export default () => {
-const ref = useRef(null);
-const history = useHistory();
-useEffect(() => {
-const { onParentNavigate } = mount(ref.current, {
-onNavigate: ({ pathname: nextPathname }) => {
-const { pathname } = history.location;
-if (pathname !== nextPathname) {
-history.push(nextPathname);
-}
-},
-});
-history.listen(onParentNavigate);
-}, []);
-return <div ref={ref} />;
-};
-
-*/
-
-/*
-
-
-import { mount } from 'marketing/MarketingApp';
-import React, { useRef, useEffect } from 'react';
-export default () => {
-const ref = useRef(null);
-useEffect(() => {
-mount(ref.current);
-});
-return <div ref={ref} />;
-};*/
+export default MarketingApp;

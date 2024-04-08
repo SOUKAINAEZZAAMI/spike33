@@ -1,4 +1,20 @@
-import { mount } from 'auth/AuthApp';
+import React, {useRef} from 'react';
+import {useHistory} from 'react-router-dom';
+import {mountMicrofrontend} from '../utils/mountMicrofrontendHelper';
+
+const AuthApp = ({onSignIn}) => {
+    const history = useHistory();
+    const ref = useRef(null);
+
+    mountMicrofrontend('auth', 'authContainer', ref, history, {onSignIn});
+
+    return <div ref={ref} id="authContainer"></div>;
+};
+
+export default AuthApp;
+
+
+/*import { mount } from 'auth/AuthApp';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 export default ({ onSignIn }) => {
@@ -19,7 +35,7 @@ history.listen(onParentNavigate);
 }, []);
 return <div ref={ref} />;
 };
-
+*/
 
 
 /*import { mount } from 'auth/AuthApp';

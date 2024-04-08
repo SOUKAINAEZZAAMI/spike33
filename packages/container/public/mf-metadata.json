@@ -1,0 +1,39 @@
+[
+  {
+    "name": "auth",
+    "remoteEntryUrl": "http://localhost:8082/remoteEntry.js",
+    "version": "1.0.0",
+    "dependencies": {
+      "react": "17.0.2",
+      "react-dom": "17.0.2"
+    },
+    "permissions": ["login", "logout", "register"],
+    "env": {
+      "API_URL": "http://localhost:8082/api"
+    }
+  },
+  {
+    "name": "marketing",
+    "remoteEntryUrl": "http://localhost:8081/remoteEntry.js",
+    "version": "1.2.3",
+    "dependencies": {
+      "vue": "3.0.5"
+    },
+    "permissions": ["view_marketing_material", "submit_feedback"],
+    "env": {
+      "API_URL": "http://localhost:8081/api"
+    }
+  },
+  {
+    "name": "dashboard",
+    "remoteEntryUrl": "http://localhost:8083/remoteEntry.js",
+    "version": "2.1.0",
+    "dependencies": {
+      "angular": "11.2.1"
+    },
+    "permissions": ["view_dashboard", "edit_profile"],
+    "env": {
+      "API_URL": "http://localhost:8083/api"
+    }
+  }
+]

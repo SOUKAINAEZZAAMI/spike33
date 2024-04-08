@@ -7,16 +7,19 @@ const ModuleFederationPlugin =
 require('webpack/lib/container/ModuleFederationPlugin');
 const commonConfig = require('./webpack.common');
 const devConfig = {
-mode: 'development',
-output: {
-publicPath: 'http://localhost:8081/',
-},
-devServer: {
-port: 8081,
-historyApiFallback: {
-index: 'index.html',
-},
-},
+    mode: 'development',
+    output: {
+        publicPath: 'http://localhost:8081/',
+    },
+    devServer: {
+        port: 8081,
+        historyApiFallback: {
+            index: 'index.html',
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+    },
 plugins: [
 new ModuleFederationPlugin({
 name: 'marketing',
