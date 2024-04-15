@@ -1,1 +1,1 @@
-import('./bootstrapA');
+import('./bootstrap');

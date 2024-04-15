@@ -10,14 +10,15 @@ const producer = kafka.producer();
 const publishMetadata = async () => {
   try {
     await producer.connect();
+    const metadata = { name: 'marketing', script: 'http://localhost:8081/remoteEntry.js' };
+    console.log('Contenu JSON à envoyer :', JSON.stringify(metadata));
     await producer.send({
       topic: 'microfrontendMetadata',
-      messages: [{ value: JSON.stringify({ name: 'marketing', script: 'http://localhost:8081/remoteEntry.js' }) }],
-      
+      messages: [{ value: JSON.stringify(metadata) }],
     });
-    console.log('Metadata published successfully');
+    console.log('Metadata publiées avec succès');
   } catch (error) {
-    console.error('Error publishing metadata:', error);
+    console.error('Erreur lors de la publication des métadonnées :', error);
   } finally {
     await producer.disconnect();
   }
