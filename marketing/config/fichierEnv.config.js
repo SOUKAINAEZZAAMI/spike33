@@ -1,0 +1,7 @@
+MICROFRONTEND_NAME="marketing"
+
+MICROFRONTEND_VERSION="1.0.0"
+
+KAFKA_TOPIC="microfrontendMetadata"
+
+KAFKA_BROKERS="localhost:9092"
